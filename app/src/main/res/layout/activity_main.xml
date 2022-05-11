@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     android:background="@drawable/gradient_list"
-    android:id="@+id/main_layout">
+    android:id="@+id/mainLayout">
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
