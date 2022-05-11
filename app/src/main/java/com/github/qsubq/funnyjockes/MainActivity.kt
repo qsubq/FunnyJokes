@@ -12,11 +12,13 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(R.layout.activity_main)
+        setContentView(binding.root)
 
-        val animationDrawable : AnimationDrawable = binding.mainLayout.background as AnimationDrawable
-        animationDrawable.setEnterFadeDuration(2500)
-        animationDrawable.setExitFadeDuration(5000)
-        animationDrawable.start()
+        val animationDrawable: AnimationDrawable =
+            (binding.mainLayout.background as AnimationDrawable).apply {
+                setEnterFadeDuration(2500)
+                setExitFadeDuration(5000)
+                start()
+            }
     }
 }
