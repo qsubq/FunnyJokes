@@ -6,41 +6,52 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.github.qsubq.funnyjockes.databinding.ActivityMainBinding
+import com.github.qsubq.funnyjockes.domain.adapter.PagerAdapter
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-
-    private val viewModel by lazy {
-        ViewModelProvider(this)[MainViewModel::class.java]
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val animationDrawable: AnimationDrawable =
-            (binding.mainLayout.background as AnimationDrawable).apply {
-                setEnterFadeDuration(2500)
-                setExitFadeDuration(5000)
-                start()
+        initial()
+    }
+
+    private fun initial() {
+        binding.viewPager.adapter = PagerAdapter(this)
+        binding.tabLayout.tabIconTint = null
+
+        TabLayoutMediator(binding.tabLayout,binding.viewPager){tab,pos ->
+            when(pos){
+                0 -> {
+                    tab.setIcon(R.drawable.ic_baseline_speaker_notes_24)
+                    tab.icon?.setTint(getColor(R.color.red_500))
+                }
+                1 -> {
+                    tab.setIcon(R.drawable.ic_baseline_favorite_24)
+                    tab.icon?.setTint(getColor(R.color.red_500))
+                    tab.icon?.alpha = 70
+                }
             }
 
-        binding.progressBar.visibility = View.GONE
+        }.attach()
+        binding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
+            override fun onTabSelected(tab: TabLayout.Tab) {
+                tab.icon?.alpha = 250
+            }
 
-        viewModel.jokeLiveData.observe(this) { response ->
-            binding.progressBar.visibility = View.GONE
-            binding.tvJoke.text = response.body()?.joke
-            binding.btnJoke.isEnabled = true
-        }
+            override fun onTabUnselected(tab: TabLayout.Tab) {
+                tab.icon?.alpha = 70
+            }
 
-        binding.btnJoke.setOnClickListener {
-            binding.tvJoke.text = ""
-            binding.btnJoke.isEnabled = false
-            binding.progressBar.visibility = View.VISIBLE
-            viewModel.getJoke()
+            override fun onTabReselected(tab: TabLayout.Tab?) {}
+
+        })
 
 
-        }
     }
 }

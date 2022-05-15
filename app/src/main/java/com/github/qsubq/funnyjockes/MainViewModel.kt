@@ -11,12 +11,4 @@ import kotlinx.coroutines.launch
 import retrofit2.Response
 
 class MainViewModel : ViewModel() {
-    val jokeLiveData: MutableLiveData<Response<JokeModel>> = MutableLiveData()
-    val repo = ServiceRepository()
-
-    fun getJoke() {
-        viewModelScope.launch {
-            jokeLiveData.value = repo.getJoke()
-        }
-    }
 }
