@@ -5,16 +5,21 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.github.qsubq.funnyjockes.data.model.JokeModel
 import com.github.qsubq.funnyjockes.data.network.retrofit.ServiceRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import retrofit2.Response
+import javax.inject.Inject
 
-class JokeViewModel : ViewModel() {
+@HiltViewModel
+class JokeViewModel @Inject constructor(
+    private val repository: ServiceRepository
+) : ViewModel() {
     val jokeLiveData: MutableLiveData<Response<JokeModel>> = MutableLiveData()
-    val repo = ServiceRepository()
+
 
     fun getJoke() {
         viewModelScope.launch {
-            jokeLiveData.value = repo.getJoke()
+            jokeLiveData.value = repository.getJoke()
         }
     }
 }

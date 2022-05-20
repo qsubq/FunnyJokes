@@ -7,8 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.github.qsubq.funnyjockes.databinding.FragmentJokeBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class JokeFragment : Fragment() {
 
     private lateinit var binding: FragmentJokeBinding

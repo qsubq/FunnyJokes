@@ -9,7 +9,9 @@ import com.github.qsubq.funnyjockes.databinding.ActivityMainBinding
 import com.github.qsubq.funnyjockes.domain.adapter.PagerAdapter
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
