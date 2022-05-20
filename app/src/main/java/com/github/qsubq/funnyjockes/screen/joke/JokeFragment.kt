@@ -1,21 +1,17 @@
 package com.github.qsubq.funnyjockes.screen.joke
 
-import android.graphics.drawable.AnimationDrawable
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.github.qsubq.funnyjockes.MainViewModel
-import com.github.qsubq.funnyjockes.R
 import com.github.qsubq.funnyjockes.databinding.FragmentJokeBinding
-import kotlinx.coroutines.NonDisposableHandle.parent
 
 
 class JokeFragment : Fragment() {
 
-    private lateinit var binding : FragmentJokeBinding
+    private lateinit var binding: FragmentJokeBinding
 
     private val viewModel by lazy {
         ViewModelProvider(this)[JokeViewModel::class.java]
@@ -25,7 +21,7 @@ class JokeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentJokeBinding.inflate(layoutInflater,container, false)
+        binding = FragmentJokeBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
 
@@ -35,12 +31,7 @@ class JokeFragment : Fragment() {
     }
 
     private fun init() {
-        val animationDrawable: AnimationDrawable =
-            (binding.jokeLayout.background as AnimationDrawable).apply {
-                setEnterFadeDuration(2500)
-                setExitFadeDuration(5000)
-                start()
-            }
+
 
         binding.progressBar.visibility = View.GONE
 
