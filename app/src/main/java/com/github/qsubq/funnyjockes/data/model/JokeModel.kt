@@ -1,5 +1,15 @@
 package com.github.qsubq.funnyjockes.data.model
 
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "jokes_table")
 data class JokeModel(
-    val joke: String
+
+    @PrimaryKey(autoGenerate = true)
+    val id: Int,
+
+    @ColumnInfo
+    val joke: String = ""
 )

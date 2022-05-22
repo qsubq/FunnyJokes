@@ -5,33 +5,40 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_gradient"
+    android:gravity="center"
     android:orientation="vertical"
-    tools:context=".screen.joke.JokeFragment"
-    android:gravity="center">
+    tools:context=".screen.joke.JokeFragment">
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tv_joke"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textColor="@color/grey"
-        android:textSize="22sp"
         android:layout_marginStart="6dp"
         android:layout_marginEnd="6dp"
         android:layout_marginBottom="20dp"
-        />
+        android:gravity="center"
+        android:textColor="@color/grey"
+        android:textSize="22sp" />
 
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"/>
+        android:layout_marginBottom="20dp" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_joke"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
         android:text="@string/get_joke" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_favourite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/save_joke" />
 
 
 </androidx.appcompat.widget.LinearLayoutCompat>

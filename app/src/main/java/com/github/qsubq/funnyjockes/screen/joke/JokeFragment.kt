@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.github.qsubq.funnyjockes.data.model.JokeModel
 import com.github.qsubq.funnyjockes.databinding.FragmentJokeBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -21,7 +22,7 @@ class JokeFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentJokeBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
@@ -35,7 +36,6 @@ class JokeFragment : Fragment() {
 
 
         binding.progressBar.visibility = View.GONE
-
         viewModel.jokeLiveData.observe(viewLifecycleOwner) { response ->
             binding.progressBar.visibility = View.GONE
             binding.tvJoke.text = response.body()?.joke
@@ -47,6 +47,11 @@ class JokeFragment : Fragment() {
             binding.progressBar.visibility = View.VISIBLE
             viewModel.getJoke()
         }
-    }
 
+        binding.btnFavourite.setOnClickListener {
+            if (binding.tvJoke.text != "" && binding.tvJoke.text != " ") {
+                viewModel.insertJoke(JokeModel(0, binding.tvJoke.text.toString()))
+            }
+        }
+    }
 }

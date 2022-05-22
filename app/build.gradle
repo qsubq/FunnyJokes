@@ -1,4 +1,3 @@
-
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
@@ -33,23 +32,27 @@ android {
         jvmTarget = '1.8'
     }
 
-    buildFeatures{
+    buildFeatures {
         viewBinding true
     }
 }
 
 dependencies {
-    //Hilt
-    implementation 'com.google.dagger:hilt-android:2.42'
-    kapt 'com.google.dagger:hilt-compiler:2.42'
-    androidTestImplementation  'com.google.dagger:hilt-android-testing:2.42'
-    kaptAndroidTest 'com.google.dagger:hilt-compiler:2.42'
-    testImplementation 'com.google.dagger:hilt-android-testing:2.42'
-    kaptTest 'com.google.dagger:hilt-compiler:2.42'
+    //Room
+    def roomVersion = "2.4.2"
+    implementation("androidx.room:room-runtime:$roomVersion")
+    annotationProcessor("androidx.room:room-compiler:$roomVersion")
+    kapt("androidx.room:room-compiler:$roomVersion")
+    implementation("androidx.room:room-ktx:$roomVersion")
 
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1"
-    implementation "androidx.viewpager2:viewpager2:1.1.0-beta01"
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    //Hilt
+    def HiltVersion = "2.42"
+    implementation "com.google.dagger:hilt-android:$HiltVersion"
+    kapt "com.google.dagger:hilt-compiler:$HiltVersion"
+    androidTestImplementation "com.google.dagger:hilt-android-testing:$HiltVersion"
+    kaptAndroidTest "com.google.dagger:hilt-compiler:$HiltVersion"
+    testImplementation "com.google.dagger:hilt-android-testing:$HiltVersion"
+    kaptTest "com.google.dagger:hilt-compiler:$HiltVersion"
 
     // Retrofit
     def retrofitVersion = "2.9.0"
@@ -62,6 +65,9 @@ dependencies {
     implementation 'com.google.android.material:material:1.6.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
 
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1"
+    implementation "androidx.viewpager2:viewpager2:1.1.0-beta01"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
