@@ -13,6 +13,11 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class JokeFragment : Fragment() {
 
+    companion object {
+        const val IDM_OPEN = 101
+        const val IDM_SAVE = 102
+    }
+
     private lateinit var binding: FragmentJokeBinding
 
     private val viewModel by lazy {
@@ -33,7 +38,6 @@ class JokeFragment : Fragment() {
     }
 
     private fun init() {
-
 
         binding.progressBar.visibility = View.GONE
         viewModel.jokeLiveData.observe(viewLifecycleOwner) { response ->
