@@ -5,9 +5,9 @@ import retrofit2.Response
 import javax.inject.Inject
 
 
-class ServiceRepository @Inject constructor() {
+class ServiceRepository @Inject constructor(private val apiService: ApiService) {
     suspend fun getJoke(): Response<JokeModel> {
-        return RetrofitInstance.api.getJoke()
+        return apiService.getJoke()
     }
 
 }

@@ -14,5 +14,6 @@ interface JokeDao {
     suspend fun deleteFavourite(jokeModel: JokeModel)
 
     @Query("SELECT * from jokes_table")
-    fun getFavouriteJokes() : LiveData<List<JokeModel>>
+    fun getFavouriteJokes(): LiveData<List<JokeModel>>
+
 }

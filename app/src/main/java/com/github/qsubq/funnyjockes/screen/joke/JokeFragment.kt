@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.github.qsubq.funnyjockes.R
 import com.github.qsubq.funnyjockes.data.model.JokeModel
 import com.github.qsubq.funnyjockes.databinding.FragmentJokeBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -40,6 +41,7 @@ class JokeFragment : Fragment() {
     private fun init() {
 
         binding.progressBar.visibility = View.GONE
+
         viewModel.jokeLiveData.observe(viewLifecycleOwner) { response ->
             binding.progressBar.visibility = View.GONE
             binding.tvJoke.text = response.body()?.joke
@@ -49,11 +51,21 @@ class JokeFragment : Fragment() {
         binding.btnJoke.setOnClickListener {
             binding.btnJoke.isEnabled = false
             binding.progressBar.visibility = View.VISIBLE
-            viewModel.getJoke()
+            binding.btnJoke.isEnabled = true
+
+            if (viewModel.isOnline()) {
+                viewModel.getJoke()
+            } else {
+                binding.progressBar.visibility = View.GONE
+                binding.tvJoke.text = getString(R.string.connection_error)
+            }
         }
 
         binding.btnFavourite.setOnClickListener {
-            if (binding.tvJoke.text != "" && binding.tvJoke.text != " ") {
+            if (binding.tvJoke.text != ""
+                && binding.tvJoke.text != " "
+                && binding.tvJoke.text != getString(R.string.connection_error)
+            ) {
                 viewModel.insertJoke(JokeModel(0, binding.tvJoke.text.toString()))
             }
         }

@@ -1,10 +1,7 @@
 package com.github.qsubq.funnyjockes
 
-import android.graphics.drawable.AnimationDrawable
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
 import com.github.qsubq.funnyjockes.databinding.ActivityMainBinding
 import com.github.qsubq.funnyjockes.domain.adapter.PagerAdapter
 import com.google.android.material.tabs.TabLayout
@@ -27,8 +24,8 @@ class MainActivity : AppCompatActivity() {
         binding.viewPager.adapter = PagerAdapter(this)
         binding.tabLayout.tabIconTint = null
 
-        TabLayoutMediator(binding.tabLayout,binding.viewPager){tab,pos ->
-            when(pos){
+        TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, pos ->
+            when (pos) {
                 0 -> {
                     tab.setIcon(R.drawable.ic_baseline_speaker_notes_24)
                     tab.icon?.setTint(getColor(R.color.red_500))
@@ -41,7 +38,7 @@ class MainActivity : AppCompatActivity() {
             }
 
         }.attach()
-        binding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
+        binding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
                 tab.icon?.alpha = 250
             }

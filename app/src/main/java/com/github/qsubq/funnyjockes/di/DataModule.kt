@@ -1,47 +1,35 @@
 package com.github.qsubq.funnyjockes.di
 
-import android.content.Context
-import androidx.room.Room
-import com.github.qsubq.funnyjockes.data.db.room.JokesDataBase
 import com.github.qsubq.funnyjockes.data.db.room.dao.JokeDao
 import com.github.qsubq.funnyjockes.data.db.room.repository.DataRealization
+import com.github.qsubq.funnyjockes.data.network.NetworkManager
+import com.github.qsubq.funnyjockes.data.network.retrofit.ApiService
 import com.github.qsubq.funnyjockes.data.network.retrofit.ServiceRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.qualifiers.ApplicationContext
-import dagger.hilt.components.SingletonComponent
-import javax.inject.Singleton
+import dagger.hilt.android.components.ViewModelComponent
+import dagger.hilt.android.scopes.ViewModelScoped
 
 @Module
-@InstallIn(SingletonComponent::class)
+@InstallIn(ViewModelComponent::class)
 class DataModule {
 
-    @Singleton
+    @ViewModelScoped
     @Provides
-    fun providesServiceRepository(): ServiceRepository {
-        return ServiceRepository()
+    fun providesServiceRepository(apiService: ApiService): ServiceRepository {
+        return ServiceRepository(apiService)
     }
 
-    @Singleton
+    @ViewModelScoped
     @Provides
     fun providesDataRepository(dao: JokeDao): DataRealization {
         return DataRealization(dao)
     }
 
-    @Singleton
+    @ViewModelScoped
     @Provides
-    fun provideJokeDao(jokesDataBase: JokesDataBase): JokeDao {
-        return jokesDataBase.getDao()
-    }
-
-    @Singleton
-    @Provides
-    fun provideAppDatabase(@ApplicationContext appContext: Context): JokesDataBase {
-        return Room.databaseBuilder(
-            appContext,
-            JokesDataBase::class.java,
-            "db"
-        ).build()
+    fun provideNetworkManager(): NetworkManager {
+        return NetworkManager()
     }
 }
