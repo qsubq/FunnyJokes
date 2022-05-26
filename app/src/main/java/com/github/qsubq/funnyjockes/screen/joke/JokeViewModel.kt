@@ -8,8 +8,9 @@ import com.github.qsubq.funnyjockes.data.db.room.repository.DataRealization
 import com.github.qsubq.funnyjockes.data.model.JokeModel
 import com.github.qsubq.funnyjockes.data.network.NetworkManager
 import com.github.qsubq.funnyjockes.data.network.retrofit.ServiceRepository
+import com.github.qsubq.funnyjockes.di.IoDispatcher
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
 import retrofit2.Response
 import javax.inject.Inject
@@ -19,7 +20,8 @@ class JokeViewModel @Inject constructor(
     private val context: Application,
     private val serviceRepository: ServiceRepository,
     private val dataRealization: DataRealization,
-    private val networkManager: NetworkManager
+    private val networkManager: NetworkManager,
+    @IoDispatcher private val ioDispatcher: CoroutineDispatcher
 ) : AndroidViewModel(context) {
 
     val jokeLiveData: MutableLiveData<Response<JokeModel>> = MutableLiveData()
@@ -32,7 +34,7 @@ class JokeViewModel @Inject constructor(
     }
 
     fun insertJoke(jokeModel: JokeModel) =
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch(ioDispatcher) {
             dataRealization.insert(jokeModel)
 
         }
