@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import com.github.qsubq.funnyjockes.R
 import com.github.qsubq.funnyjockes.data.model.JokeModel
 import com.github.qsubq.funnyjockes.databinding.FragmentJokeBinding
@@ -13,17 +13,8 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class JokeFragment : Fragment() {
-
-    companion object {
-        const val IDM_OPEN = 101
-        const val IDM_SAVE = 102
-    }
-
     private lateinit var binding: FragmentJokeBinding
-
-    private val viewModel by lazy {
-        ViewModelProvider(this)[JokeViewModel::class.java]
-    }
+    private val viewModel: JokeViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,6 +40,10 @@ class JokeFragment : Fragment() {
         }
 
         binding.btnJoke.setOnClickListener {
+            if (binding.tvJoke.text.isNotEmpty()){
+                binding.tvJoke.text = ""
+            }
+
             binding.btnJoke.isEnabled = false
             binding.progressBar.visibility = View.VISIBLE
             binding.btnJoke.isEnabled = true
@@ -70,4 +65,5 @@ class JokeFragment : Fragment() {
             }
         }
     }
+
 }

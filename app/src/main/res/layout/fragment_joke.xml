@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/joke_layout"
     android:layout_width="match_parent"
@@ -9,36 +10,54 @@
     android:orientation="vertical"
     tools:context=".screen.joke.JokeFragment">
 
+
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tv_joke"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="6dp"
-        android:layout_marginEnd="6dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginTop="252dp"
         android:gravity="center"
-        android:textColor="@color/grey"
-        android:textSize="22sp" />
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp" />
+        android:layout_marginBottom="192dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_joke"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_joke"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="@string/get_joke" />
+        android:layout_marginStart="127dp"
+        android:layout_marginEnd="127dp"
+        android:layout_marginBottom="13dp"
+        android:text="@string/get_joke"
+        app:layout_constraintBottom_toTopOf="@+id/btn_favourite"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_favourite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="@string/save_joke" />
+        android:layout_marginStart="123dp"
+        android:layout_marginEnd="122dp"
+        android:layout_marginBottom="53dp"
+        android:text="@string/save_joke"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
-</androidx.appcompat.widget.LinearLayoutCompat>
+</androidx.constraintlayout.widget.ConstraintLayout>

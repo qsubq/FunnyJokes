@@ -36,7 +36,6 @@ class JokeViewModel @Inject constructor(
     fun insertJoke(jokeModel: JokeModel) =
         viewModelScope.launch(ioDispatcher) {
             dataRealization.insert(jokeModel)
-
         }
 
     fun isOnline(): Boolean {
