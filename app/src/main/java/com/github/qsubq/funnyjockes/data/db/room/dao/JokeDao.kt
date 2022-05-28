@@ -15,5 +15,4 @@ interface JokeDao {
 
     @Query("SELECT * from jokes_table")
     fun getFavouriteJokes(): LiveData<List<JokeModel>>
-
 }

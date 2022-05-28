@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.github.qsubq.funnyjockes.R
 import com.github.qsubq.funnyjockes.databinding.FragmentFavouriteBinding
-import com.github.qsubq.funnyjockes.domain.adapter.FavouriteAdapter
+import com.github.qsubq.funnyjockes.adapter.FavouriteAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 

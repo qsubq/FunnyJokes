@@ -40,13 +40,12 @@ class JokeFragment : Fragment() {
         }
 
         binding.btnJoke.setOnClickListener {
-            if (binding.tvJoke.text.isNotEmpty()){
+            if (binding.tvJoke.text.isNotEmpty()) {
                 binding.tvJoke.text = ""
             }
 
             binding.btnJoke.isEnabled = false
             binding.progressBar.visibility = View.VISIBLE
-            binding.btnJoke.isEnabled = true
 
             if (viewModel.isOnline()) {
                 viewModel.getJoke()
@@ -54,6 +53,7 @@ class JokeFragment : Fragment() {
                 binding.progressBar.visibility = View.GONE
                 binding.tvJoke.text = getString(R.string.connection_error)
             }
+            binding.btnJoke.isEnabled = true
         }
 
         binding.btnFavourite.setOnClickListener {

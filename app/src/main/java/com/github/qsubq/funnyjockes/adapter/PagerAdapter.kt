@@ -1,4 +1,4 @@
-package com.github.qsubq.funnyjockes.domain.adapter
+package com.github.qsubq.funnyjockes.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity

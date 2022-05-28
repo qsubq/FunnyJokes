@@ -3,7 +3,7 @@ package com.github.qsubq.funnyjockes
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.github.qsubq.funnyjockes.databinding.ActivityMainBinding
-import com.github.qsubq.funnyjockes.domain.adapter.PagerAdapter
+import com.github.qsubq.funnyjockes.adapter.PagerAdapter
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
