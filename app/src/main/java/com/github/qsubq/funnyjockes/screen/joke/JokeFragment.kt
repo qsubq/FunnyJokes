@@ -1,5 +1,6 @@
 package com.github.qsubq.funnyjockes.screen.joke
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -18,7 +19,7 @@ class JokeFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         binding = FragmentJokeBinding.inflate(layoutInflater, container, false)
         return binding.root
@@ -64,6 +65,20 @@ class JokeFragment : Fragment() {
                 viewModel.insertJoke(JokeModel(0, binding.tvJoke.text.toString()))
             }
         }
+        binding.shareView.setOnClickListener {
+            if (binding.tvJoke.text != ""
+                && binding.tvJoke.text != " "
+                && binding.tvJoke.text != getString(R.string.connection_error)
+            ) {
+                sendTextIntent()
+            }
+        }
     }
-
+    fun sendTextIntent(){
+        val intent = Intent(Intent.ACTION_SEND)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+        intent.putExtra(Intent.EXTRA_TEXT, binding.tvJoke.text)
+        intent.type = "text/plain"
+        startActivity(intent)
+    }
 }
