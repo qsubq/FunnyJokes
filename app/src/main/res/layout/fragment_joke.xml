@@ -15,22 +15,23 @@
         android:id="@+id/tv_joke"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="28dp"
-        android:layout_marginTop="252dp"
+        android:layout_marginHorizontal="@dimen/tv_margin_horizontal"
+        android:layout_marginTop="@dimen/tv_dimens"
         android:gravity="center"
         android:textColor="@color/white"
-        android:textSize="24sp"
+        android:textSize="@dimen/tv_textSize"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="DFGDFGDFGDFGDFGDFgdfgdfgDFGFGDFGDgDFgdfgdfgDGFDFGDFgdfgdfgdgergddhdfhdfg"/>
 
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="192dp"
+        android:layout_height="@dimen/pb_layoutHeight"
+        android:layout_marginBottom="@dimen/pb_margin_bottom"
         app:layout_constraintBottom_toTopOf="@+id/btn_joke"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -38,10 +39,9 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_joke"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="127dp"
-        android:layout_marginEnd="127dp"
+        android:layout_width="@dimen/btn_layout_width"
+        android:layout_height="@dimen/btn_layoutHeight"
+        android:layout_marginHorizontal="@dimen/btn_margin_horizontal"
         android:layout_marginBottom="13dp"
         android:backgroundTint="@color/white"
         android:text="@string/get_joke"
@@ -53,11 +53,10 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_favourite"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="123dp"
-        android:layout_marginEnd="122dp"
-        android:layout_marginBottom="53dp"
+        android:layout_width="@dimen/btn_layout_width"
+        android:layout_height="@dimen/btn_layoutHeight"
+        android:layout_marginHorizontal="@dimen/btn_margin_horizontal"
+        android:layout_marginBottom="@dimen/btnFavourite_marginBottom"
         android:backgroundTint="@color/white"
         android:text="@string/save_joke"
         android:textColor="@color/black"
@@ -68,9 +67,10 @@
 
     <ImageView
         android:id="@+id/shareView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="320dp"
+        android:layout_width="@dimen/img_size"
+        android:layout_height="@dimen/img_size"
+        android:layout_marginStart="@dimen/img_marginStart"
+        android:layout_marginEnd="14dp"
         android:layout_marginTop="16dp"
         android:contentDescription="@string/it_is_a_share_icon"
         android:src="@android:drawable/ic_menu_share"

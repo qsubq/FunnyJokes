@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources><dimen name="tv_dimens">250dp</dimen>
+    <dimen name="tv_margin_horizontal">28dp</dimen>
+    <dimen name="pb_margin_bottom">192dp</dimen>
+    <dimen name="btn_margin_horizontal">127dp</dimen>
+    <dimen name="btnFavourite_marginBottom">53dp</dimen>
+    <dimen name="btn_layout_width">150dp</dimen></resources>

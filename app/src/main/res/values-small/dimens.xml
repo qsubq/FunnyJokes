@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources><dimen name="tv_dimens">120dp</dimen>
+    <dimen name="tv_margin_horizontal">28dp</dimen>
+    <dimen name="pb_margin_bottom">40dp</dimen>
+    <dimen name="btn_margin_horizontal">127dp</dimen>
+    <dimen name="btnFavourite_marginBottom">30dp</dimen>
+    <dimen name="btn_layout_width">150dp</dimen>
+    <dimen name="tv_textSize">22sp</dimen>
+    <dimen name="img_marginStart">280dp</dimen>
+    <dimen name="btn_layoutHeight">40dp</dimen>
+    <dimen name="pb_layoutHeight">46dp</dimen>
+    <dimen name="img_size">40dp</dimen></resources>
