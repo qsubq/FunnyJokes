@@ -15,6 +15,7 @@
         android:id="@+id/tv_joke"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="28dp"
         android:layout_marginTop="252dp"
         android:gravity="center"
         android:textColor="@color/white"
@@ -37,24 +38,30 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_joke"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="127dp"
         android:layout_marginEnd="127dp"
         android:layout_marginBottom="13dp"
+        android:backgroundTint="@color/white"
         android:text="@string/get_joke"
+        android:textColor="@color/black"
+        app:cornerRadius="20dp"
         app:layout_constraintBottom_toTopOf="@+id/btn_favourite"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_favourite"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="123dp"
         android:layout_marginEnd="122dp"
         android:layout_marginBottom="53dp"
+        android:backgroundTint="@color/white"
         android:text="@string/save_joke"
+        android:textColor="@color/black"
+        app:cornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -65,12 +72,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="320dp"
         android:layout_marginTop="16dp"
+        android:contentDescription="@string/it_is_a_share_icon"
         android:src="@android:drawable/ic_menu_share"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.728"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="@string/it_is_a_share_icon" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
